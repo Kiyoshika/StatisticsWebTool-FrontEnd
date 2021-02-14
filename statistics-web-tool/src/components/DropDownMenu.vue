@@ -1,8 +1,6 @@
 <template>
     <v-menu
-        offset-y
-        left
-        bottom
+        offset-x="true"
       >
         <template v-slot:activator="{ on, attrs }">
           <v-btn
@@ -18,7 +16,7 @@
 
         <v-list>
           <v-list-item
-            v-for="items in analysisDropDown"
+            v-for="items in dropDownItems"
             :key="items"
             @click="hideNavDrawer(items)"
           >
@@ -32,7 +30,7 @@
 export default {
     props: {
         menuText: String,
-        analysisDropDown: Array
+        dropDownItems: Array
     },
 
     data () {

@@ -13,48 +13,59 @@
     </v-app-bar>
 
     <v-navigation-drawer
+      class="px-3"
       color="indigo darken-4"
       v-model="navbarDrawer"
       absolute
       temporary>
       <center><br><b style="color: white">Options:</b></center><br>
-        <drop-down-menu menuText="Data" :analysisDropDown="dataDropDown" @clicked="hideNavDrawer"></drop-down-menu><br>
-        <drop-down-menu menuText="Analysis" :analysisDropDown="analysisDropDown" @clicked="hideNavDrawer"></drop-down-menu><br>
-        <drop-down-menu menuText="Tests" :analysisDropDown="testsDropDown" @clicked="hideNavDrawer"></drop-down-menu><br>
-        <drop-down-menu menuText="Pre-Processing" :analysisDropDown="preprocessingDropDown" @clicked="hideNavDrawer"></drop-down-menu><br>
-        <drop-down-menu menuText="Visualization" :analysisDropDown="visualizationDropDown" @clicked="hideNavDrawer"></drop-down-menu><br>
-        <drop-down-menu menuText="Models" :analysisDropDown="modelsDropDown" @clicked="hideNavDrawer"></drop-down-menu><br>
+        <drop-down-menu menuText="Data" :dropDownItems="dataDropDown" @clicked="hideNavDrawer"></drop-down-menu><br>
+        <drop-down-menu menuText="Analysis" :dropDownItems="analysisDropDown" @clicked="hideNavDrawer"></drop-down-menu><br>
+        <drop-down-menu menuText="Tests" :dropDownItems="testsDropDown" @clicked="hideNavDrawer"></drop-down-menu><br>
+        <drop-down-menu menuText="Pre-Processing" :dropDownItems="preprocessingDropDown" @clicked="hideNavDrawer"></drop-down-menu><br>
+        <drop-down-menu menuText="Visualization" :dropDownItems="visualizationDropDown" @clicked="hideNavDrawer"></drop-down-menu><br>
+        <drop-down-menu menuText="Models" :dropDownItems="modelsDropDown" @clicked="hideNavDrawer"></drop-down-menu><br>
         <v-btn block dark color="indigo darken-1">About</v-btn><br>
         <v-btn block dark color="indigo darken-1">Github</v-btn><br>
     </v-navigation-drawer>
 
     <!-- Main Body of Application -->
     <br><br><br>
-    <v-container>
-      <v-row>
-      <v-col md="3">
-        <data-set-list></data-set-list>
-      </v-col>
 
-    <v-col md="9">
-    </v-col>
-      </v-row>
-    </v-container>
+        <v-container>
+          <v-row>
+            <v-col md="3">
+              <data-set-list :key="this.$store.getters.getDatasetListKey"></data-set-list>
+            </v-col>
+
+            <v-col md="9">
+              <v-card color="indigo darken-4" style="color: white" class="px-3 pb-3">
+                <center><b :key="this.$store.getters.getCurrentDatasetKey">Current Dataset: {{ this.$store.getters.getCurrentSelectedDatasetName }}</b></center>
+                <table-data :key="this.$store.getters.getTableDataKey" id="tableData"></table-data>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
     </v-app>
 
     <!-- Modals and popups -->
     <import-file-dialog ref="importFileDialogKey"></import-file-dialog>
+    <rename-data-set-dialog ref="renameDatasetKey"></rename-data-set-dialog>
+    <delete-dataset-dialog></delete-dataset-dialog>
   </div>
 </template>
 
 <script>
 import DataSetList from './components/DataSetList.vue';
+import DeleteDatasetDialog from './components/DeleteDatasetDialog.vue';
 import DropDownMenu from './components/DropDownMenu.vue';
 import ImportFileDialog from './components/ImportFileDialog.vue';
+import RenameDataSetDialog from './components/RenameDataSetDialog.vue';
+import TableData from './components/TableData.vue';
 import performAction from './js/NavbarActions.js';
 
 export default {
-  components: { DropDownMenu, DataSetList, ImportFileDialog },
+  components: { DropDownMenu, DataSetList, ImportFileDialog, RenameDataSetDialog, DeleteDatasetDialog, TableData },
 
   name: 'App',
 
@@ -127,6 +138,13 @@ export default {
 
 <style scoped>
 #app {
-  background-color: #454444;
+  background-color: #d6d6d6;
+}
+
+#tableData {
+  width: 100%;
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 </style>

@@ -5,6 +5,8 @@ function dataAction(action, datasetName) {
     switch(action) {
         case "Load Data":
             store.commit('setCurrentSelectedDatasetName', datasetName);
+            // loading original dataset, so disable flag for filtered data
+            store.commit('setDataIsFiltered', false);
             axios({
                 method: 'get',
                 url: 'http://localhost:2020/getData/'+datasetName,

@@ -31,7 +31,7 @@ export default {
 
 <style scoped>
 #card {
-    max-height: 400px;
+    max-height: 500px;
     overflow-y: auto;
 }
 </style>

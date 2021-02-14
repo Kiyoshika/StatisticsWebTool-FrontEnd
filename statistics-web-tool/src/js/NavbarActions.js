@@ -7,6 +7,14 @@ function performAction(clickedItem) {
             //store.state.importFileDialog = true;
             store.commit('setImportFileDialog', true);
             break;
+
+        case "Filter Table":
+            store.commit('setFilterDataDialog', true);
+            break;
+
+        case "Sort Table":
+            store.commit('setSortDataDialog', true);
+            break;
     }
 }
 

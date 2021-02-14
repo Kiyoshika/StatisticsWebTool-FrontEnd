@@ -39,6 +39,7 @@ export default {
 #dTable th {
   border: 2px solid black;
   padding: 8px;
+  text-align: center;
 }
 
 #dTable tr:nth-child(even) {

@@ -1,6 +1,24 @@
-# StatisticsWebTool-FrontEnd
-Front end for my statistics web tool created with Vue + Vuetify.
+# statistics-web-tool
 
-# Features so far:
-* Import, rename and delete CSV datasets.
-* Filter and sort data using a "condition builder" to handle more complex filtering/sorting.
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

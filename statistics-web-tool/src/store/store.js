@@ -11,6 +11,8 @@ const store = new Vuex.Store({
       renameDialog: false,
       importFileDialog: false,
       deleteDatasetDialog: false,
+      filterDataDialog: false,
+      sortDataDialog: false,
 
       // when renaming a dataset, need to pass the current selected datset name
       currentSelectedDatasetName: '',
@@ -22,7 +24,11 @@ const store = new Vuex.Store({
 
       // table data populated from DataSetListButtonActions.js
       tableColumns: [],
-      tableData: [[]]
+      tableData: [[]],
+
+      // if dataset is filtered, use this flag to append a "(filtered)" on the current selected data set text
+      // (but don't actually modify the text as it's used in API calls)
+      dataIsFiltered: false
     },
     
     getters: {
@@ -64,6 +70,18 @@ const store = new Vuex.Store({
 
       getTableDataKey: (state) => {
         return state.tableDataKey;
+      },
+
+      getFilterDataDialog: (state) => {
+        return state.filterDataDialog;
+      },
+
+      getDataIsFiltered: (state) => {
+        return state.dataIsFiltered;
+      },
+
+      getSortDataDialog: (state) => {
+        return state.sortDataDialog;
       }
     },
   
@@ -106,6 +124,18 @@ const store = new Vuex.Store({
 
       refreshDataTable(state) {
         state.tableDataKey += 0.001;
+      },
+
+      setFilterDataDialog(state, bool) {
+        state.filterDataDialog = bool;
+      },
+
+      setSortDataDialog(state, bool) {
+        state.sortDataDialog = bool;
+      },
+
+      setDataIsFiltered(state, bool) {
+        state.dataIsFiltered = bool;
       }
     }
   });

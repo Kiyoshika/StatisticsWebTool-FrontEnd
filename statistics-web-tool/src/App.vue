@@ -40,7 +40,7 @@
 
             <v-col md="9">
               <v-card color="indigo darken-4" style="color: white" class="px-3 pb-3">
-                <center><b :key="this.$store.getters.getCurrentDatasetKey">Current Dataset: {{ this.$store.getters.getCurrentSelectedDatasetName }}</b></center>
+                <center><b :key="this.$store.getters.getCurrentDatasetKey">Current Dataset: {{ currentDatasetName }}</b></center>
                 <table-data :key="this.$store.getters.getTableDataKey" id="tableData"></table-data>
               </v-card>
             </v-col>
@@ -52,6 +52,8 @@
     <import-file-dialog ref="importFileDialogKey"></import-file-dialog>
     <rename-data-set-dialog ref="renameDatasetKey"></rename-data-set-dialog>
     <delete-dataset-dialog></delete-dataset-dialog>
+    <filter-data-dialog></filter-data-dialog>
+    <sort-data-dialog></sort-data-dialog>
   </div>
 </template>
 
@@ -59,15 +61,27 @@
 import DataSetList from './components/DataSetList.vue';
 import DeleteDatasetDialog from './components/DeleteDatasetDialog.vue';
 import DropDownMenu from './components/DropDownMenu.vue';
+import FilterDataDialog from './components/FilterDataDialog.vue';
 import ImportFileDialog from './components/ImportFileDialog.vue';
 import RenameDataSetDialog from './components/RenameDataSetDialog.vue';
+import SortDataDialog from './components/SortDataDialog.vue';
 import TableData from './components/TableData.vue';
 import performAction from './js/NavbarActions.js';
 
 export default {
-  components: { DropDownMenu, DataSetList, ImportFileDialog, RenameDataSetDialog, DeleteDatasetDialog, TableData },
+  components: { DropDownMenu, DataSetList, ImportFileDialog, RenameDataSetDialog, DeleteDatasetDialog, TableData, FilterDataDialog, SortDataDialog },
 
   name: 'App',
+
+  computed: {
+    currentDatasetName() {
+      if (this.$store.getters.getDataIsFiltered) {
+        return this.$store.getters.getCurrentSelectedDatasetName + " (filtered)";
+      } else {
+        return this.$store.getters.getCurrentSelectedDatasetName;
+      }
+    }
+  },
 
   data: () => ({
     // show nav bar drawer

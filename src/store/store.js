@@ -5,6 +5,8 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
+      //serverURL: 'http://localhost:2020/',
+      serverURL: 'https://statisticswebtool.herokuapp.com/',
       currentUsername: 'zach',
 
       // booleans to show/hide dialogs

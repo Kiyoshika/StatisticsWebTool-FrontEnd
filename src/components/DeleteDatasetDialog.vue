@@ -53,7 +53,7 @@ export default {
         deleteData: async function() {
             await this.$http({
                 method: 'post',
-                url: 'http://localhost:2020/removeData/'+this.$store.state.currentSelectedDatasetName,
+                url: this.$store.state.serverURL+'removeData/'+this.$store.state.currentSelectedDatasetName,
                 headers: {
                     'client-username': this.$store.getters.getUsername
                 }

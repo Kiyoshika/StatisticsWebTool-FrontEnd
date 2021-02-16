@@ -14,7 +14,7 @@ export default {
   components: { DataSetListButton },
     mounted() {
         // fetch dataset list for current user
-        this.$http.get('http://localhost:2020/getUploadedFileNames', {
+        this.$http.get(this.$store.state.serverURL+'getUploadedFileNames', {
             headers: {
                 'client-username': this.$store.getters.getUsername
             }

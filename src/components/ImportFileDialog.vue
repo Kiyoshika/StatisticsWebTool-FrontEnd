@@ -64,7 +64,7 @@ export default {
             let formData = new FormData();
             formData.append("file", this.chosenFile);
 
-            await this.$http.post('http://localhost:2020/importData', formData, {
+            await this.$http.post(this.$store.state.serverURL+'importData', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'client-username': this.$store.getters.getUsername

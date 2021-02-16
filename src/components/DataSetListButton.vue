@@ -35,6 +35,8 @@ export default {
         return {
             menuItems: [
                 "Load Data",
+                "Filter",
+                "Sort",
                 "Rename",
                 "Delete"
             ]

@@ -174,7 +174,7 @@ export default {
 
         this.$http({
             method: 'post',
-            url: 'http://localhost:2020/filterData/'+this.$store.getters.getCurrentSelectedDatasetName,
+            url: this.$store.state.serverURL+'filterData/'+this.$store.getters.getCurrentSelectedDatasetName,
             headers: {
                 'client-username': this.$store.getters.getUsername,
                 'Content-Type': 'application/json'

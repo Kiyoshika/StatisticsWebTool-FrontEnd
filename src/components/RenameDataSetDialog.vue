@@ -50,7 +50,7 @@ export default {
         async renameData() {
             await this.$http({
                 method: 'post',
-                url: 'http://localhost:2020/renameData/'+this.$store.state.currentSelectedDatasetName+'/'+this.newDatasetName,
+                url: this.$store.state.serverURL+'renameData/'+this.$store.state.currentSelectedDatasetName+'/'+this.newDatasetName,
                 headers: {
                     'client-username': this.$store.getters.getUsername
                 }

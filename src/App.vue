@@ -90,11 +90,7 @@ export default {
     // dropdown menu items in navigation bar
     dataDropDown: [
       "Import CSV File",
-      "Select Columns",
-      "Filter Table",
-      "Sort Table",
-      "Rename Dataset",
-      "Delete Dataset"
+      "Select Columns"
     ],
 
     analysisDropDown: [

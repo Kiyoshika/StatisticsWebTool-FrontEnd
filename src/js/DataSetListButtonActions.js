@@ -9,7 +9,7 @@ function dataAction(action, datasetName) {
             store.commit('setDataIsFiltered', false);
             axios({
                 method: 'get',
-                url: 'http://localhost:2020/getData/'+datasetName,
+                url: store.state.serverURL+'getData/'+datasetName,
                 headers: {
                     'client-username': store.getters.getUsername
                 }
@@ -23,6 +23,14 @@ function dataAction(action, datasetName) {
         case "Rename":
             store.commit('setRenameDialog', true);
             store.commit('setCurrentSelectedDatasetName', datasetName);
+            break;
+
+        case "Filter":
+            store.commit('setFilterDataDialog', true);
+            break;
+
+        case "Sort":
+            store.commit('setSortDataDialog', true);
             break;
 
         case "Delete":

@@ -1,6 +1,24 @@
-# StatisticsWebTool-FrontEnd
-Front end for my statistics web tool created with Vue + Vuetify.
+# statistics-web-tool
 
-# Features so far:
-* Import, rename and delete CSV datasets.
-* Loading a CSV file will populate a table in the main view.
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
